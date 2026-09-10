@@ -1,0 +1,7 @@
+main.c: In function ‘main’:
+main.c:9:14: warning: unused variable ‘x’ [-Wunused-variable]
+    9 |   int i = 0, x = 0;
+      |              ^
+main.c:9:7: warning: unused variable ‘i’ [-Wunused-variable]
+    9 |   int i = 0, x = 0;
+      |       ^

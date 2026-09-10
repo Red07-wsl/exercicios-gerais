@@ -1,0 +1,7 @@
+main.c: In function ‘main’:
+main.c:5:10: warning: unused variable ‘z’ [-Wunused-variable]
+    5 |   int i, z, l1, c1, l2, c2, x, end = 0, escalar, qualmatrixmult;
+      |          ^
+main.c:5:7: warning: unused variable ‘i’ [-Wunused-variable]
+    5 |   int i, z, l1, c1, l2, c2, x, end = 0, escalar, qualmatrixmult;
+      |       ^

@@ -1,0 +1,29 @@
+data.c: In function ‘calculaDiferencaDias’:
+data.c:231:27: warning: suggest parentheses around ‘&&’ within ‘||’ [-Wparentheses]
+  231 |          if(  ano1 > ano2 && mes1 > mes2 || ano1 > ano2 && mes1 == mes2 && dia1 > dia2){
+      |               ~~~~~~~~~~~~^~~~~~~~~~~~~~
+data.c:245:27: warning: suggest parentheses around ‘&&’ within ‘||’ [-Wparentheses]
+  245 |          if(  ano2 > ano1 && mes2 > mes1 || ano2 > ano1 && mes2 == mes1 && dia2 > dia1){
+      |               ~~~~~~~~~~~~^~~~~~~~~~~~~~
+data.c:227:12: warning: unused variable ‘z’ [-Wunused-variable]
+  227 |     int i, z, diferenca = 0, data1, data2, difano;
+      |            ^
+data.c: In function ‘numeroDiasMes’:
+data.c:143:1: warning: control reaches end of non-void function [-Wreturn-type]
+  143 | }
+      | ^
+data.c: In function ‘comparaData’:
+data.c:184:1: warning: control reaches end of non-void function [-Wreturn-type]
+  184 | }
+      | ^
+data.c: In function ‘calculaDiferencaDias’:
+data.c:261:1: warning: control reaches end of non-void function [-Wreturn-type]
+  261 | }
+      | ^
+main.c: In function ‘main’:
+main.c:9:14: warning: unused variable ‘x’ [-Wunused-variable]
+    9 |   int i = 0, x = 0;
+      |              ^
+main.c:9:7: warning: unused variable ‘i’ [-Wunused-variable]
+    9 |   int i = 0, x = 0;
+      |       ^

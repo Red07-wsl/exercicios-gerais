@@ -5,7 +5,7 @@ void matrix_read(int rows, int cols, int matrix[rows][cols]){
     int i, z;
     for(i = 0; i < rows; i++){
         for(z = 0; z < cols; z++){
-            scanf("%d ", &matrix[i][z]);
+            scanf("%d", &matrix[i][z]);
         }
     }
 }
@@ -13,9 +13,14 @@ void matrix_read(int rows, int cols, int matrix[rows][cols]){
 void matrix_print(int rows, int cols, int matrix[rows][cols]){
     int i, z;
     for(i = 0; i < rows; i++){
+        printf("|");
         for(z = 0; z < cols; z++){
-            printf("%d ", matrix[i][z]);
+            printf("%d", matrix[i][z]);
+            if(z != cols-1){
+            printf(" ");
+            }
         }
+        printf("|");
         printf("\n");
     }
     printf("\n");

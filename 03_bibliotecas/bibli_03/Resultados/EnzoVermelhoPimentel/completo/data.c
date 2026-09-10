@@ -1,15 +1,5 @@
-/**
- * @file data.h
- * @brief Biblioteca para manipulação de datas.
- * 
- * Esta biblioteca contém funções para verificar a validade de uma data, imprimir uma data por extenso,
- * verificar se um ano é bissexto, calcular o número de dias de um mês, comparar duas datas e calcular a
- * diferença em dias entre duas datas.
- * 
- */
-
-#ifndef _data
-#define _data
+#include <stdio.h>
+#include "data.h"
 
 /**
  * @brief Verifica se uma data é válida.
@@ -70,7 +60,7 @@ void imprimeMesExtenso(int mes){
             printf("Maio");
             break;
         case 6:
-            printf("junho");
+            printf("Junho");
             break;
         case 7:
             printf("Julho");
@@ -101,10 +91,10 @@ void imprimeMesExtenso(int mes){
  * @param ano Ano da data.
  */
 void imprimeDataExtenso(int dia, int mes, int ano){
-    printf("%02d", dia);
-    printf("de");
+    printf("%02d ", dia);
+    printf("de ");
     imprimeMesExtenso(mes);
-    printf("de");
+    printf(" de ");
     printf("%d", ano);
 
 
@@ -126,6 +116,7 @@ int verificaBissexto(int ano){
     if(ano % 4 == 0){
         return 1;
     }
+    return 0;
 }
 
 /**
@@ -200,8 +191,25 @@ int comparaData(int dia1, int mes1, int ano1, int dia2, int mes2, int ano2){
  * @param ano Ano da data.
  * @return int Retorna o número de dias até o mês.
 */
-int calculaDiasAteMes(int mes, int ano){
-    
+int calculaDiasAteMes(int mes, int ano) {
+    int dias = 0, i;
+
+    for (i = 1; i < mes; i++) {
+        if (i == 2) {
+            if (verificaBissexto(ano))
+                dias += 29;
+            else
+                dias += 28;
+        }
+        else if (i == 4 || i == 6 || i == 9 || i == 11) {
+            dias += 30;
+        }
+        else {
+            dias += 31;
+        }
+    }
+
+    return dias;
 }
 
 /**
@@ -215,6 +223,39 @@ int calculaDiasAteMes(int mes, int ano){
  * @param ano2 Ano da segunda data.
  * @return int Retorna o número de dias de diferença entre as datas.
  */
-int calculaDiferencaDias(int dia1, int mes1, int ano1, int dia2, int mes2, int ano2);
-
-#endif
+int calculaDiferencaDias(int dia1, int mes1, int ano1, int dia2, int mes2, int ano2){
+    int i, z, diferenca = 0, data1, data2, difano;
+    data1 = calculaDiasAteMes( mes1, ano1) + dia1;
+    data2 = calculaDiasAteMes( mes2, ano2) + dia2;
+    if(comparaData(dia1, mes1, ano1, dia2, mes2, ano2) > 0){
+         if(  ano1 > ano2 && mes1 > mes2 || ano1 > ano2 && mes1 == mes2 && dia1 > dia2){
+            difano = ano1- ano2;
+            for(i = 0; i < difano; i++){
+                if(verificaBissexto(ano2 + i)){
+                    diferenca += 366;
+                } else {
+                    diferenca +=365;
+                }
+            }
+         }
+         diferenca += data1 - data2;
+         return diferenca;
+    }
+    if(comparaData(dia1, mes1, ano1, dia2, mes2, ano2) < 0){
+         if(  ano2 > ano1 && mes2 > mes1 || ano2 > ano1 && mes2 == mes1 && dia2 > dia1){
+            difano = ano2 - ano1;
+            for(i = 0; i < difano; i++){
+                if(verificaBissexto(ano1 + i)){
+                    diferenca += 366;
+                } else {
+                    diferenca +=365;
+                }
+            }
+         }
+         diferenca += data2 - data1;
+         return diferenca;
+    }
+     if(comparaData(dia1, mes1, ano1, dia2, mes2, ano2) == 0){
+        return 0;
+        }
+}
